@@ -26,7 +26,7 @@ app.get('/notes', (req, res) => {
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, './public/index.html'));
 });
-
+// New Note
 function createNewNote(body, notesArray) {
     const newNote = body;
     if (!Array.isArray(notesArray))
@@ -50,7 +50,7 @@ app.post('/api/notes', (req, res) => {
     const newNote = createNewNote(req.body, allNotes);
     res.json(newNote);
 });
-
+// delete a note
 function deleteNote(id, notesArray) {
     for (let i = 0; i < notesArray.length; i++) {
         let note = notesArray[i];
@@ -71,7 +71,7 @@ app.delete('/api/notes/:id', (req, res) => {
     deleteNote(req.params.id, allNotes);
     res.json(true);
 });
-
+// api port 
 app.listen(PORT, () => {
     console.log(`API server now on port ${PORT}!`);
 });
